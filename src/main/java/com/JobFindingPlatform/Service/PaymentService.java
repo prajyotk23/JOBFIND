@@ -1,6 +1,8 @@
 package com.JobFindingPlatform.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Base64;
 import java.util.UUID;
 
@@ -40,7 +42,9 @@ public class PaymentService {
         pay.setAmount(dto.getAmount());
         pay.setPaymentStatus(PaymentStatus.SUCCESS);
         pay.setTransactionId(UUID.randomUUID().toString());
-        pay.setTimeStamp(LocalDateTime.now());
+        pay.setTimeStamp(ZonedDateTime.now(ZoneId.of("Asia/Kolkata")).toLocalDateTime());
+
+
 
         paymentRepo.save(pay);
 
@@ -49,7 +53,7 @@ public class PaymentService {
 
         // Prepare payload as JSON
         Map<String, Object> payload = new HashMap<>();
-        payload.put("to", "user@email.com"); // Replace with real user email
+        payload.put("to", "prajyotkanagale1008@gmail.com"); // Replace with real user email
         payload.put("subject", "Your ZIDIOConnect Invoice");
         payload.put("body", "Dear User, \n\nThank you for your payment. Please find your invoice attached.");
         payload.put("pdfBytes", Base64.getEncoder().encodeToString(pdfBytes));
@@ -64,7 +68,7 @@ public class PaymentService {
         // Send REST call
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.postForObject(
-                "http://localhost:8088/api/notify/send-invoice",
+                "http://localhost:8081/api/notifications/send-invoice",
                 requestEntity,
                 String.class
         );

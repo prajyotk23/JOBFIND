@@ -25,6 +25,8 @@ public class Payment {
 	private Long planId;
 	
 	private Double amount;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "payment_status")
 	private PaymentStatus paymentStatus;
 	private String transactionId;
 	private LocalDateTime timeStamp;

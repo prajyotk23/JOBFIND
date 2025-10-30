@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="jobPosts")
+@Table(name="job_posts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,7 +34,6 @@ public class JobPost {
 	private String jobDescription;
 	private String postedBy;
 	private LocalDateTime postedAt;
-	
 	private boolean active = true;
 
 	public Long getId() {

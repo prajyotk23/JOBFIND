@@ -39,26 +39,32 @@ public class JobPostController {
 	public ResponseEntity<List<JobPostDTO>>getjobByrecruiter(@RequestParam String postedBy){
 		return ResponseEntity.ok(jobPostService.getJobByPostedBy(postedBy));
 	}
-	@GetMapping("/search/{companyName}")
-	public ResponseEntity<List<JobPostDTO>>getJobByCompanyName(@PathVariable String companyName){
-		return ResponseEntity.ok(jobPostService.getJobByCompanyName(companyName));
+	@GetMapping("/search/company/{companyName}")
+	public ResponseEntity<List<JobPostDTO>> getJobByCompanyName(@PathVariable String companyName) {
+	    return ResponseEntity.ok(jobPostService.getJobByCompanyName(companyName));
 	}
-	@GetMapping("/search/{jobType}")
-	public ResponseEntity<List<JobPostDTO>>getJobByJobType(@PathVariable JobType jobType){
-		return ResponseEntity.ok(jobPostService.getJobByJobType(jobType));
+
+	@GetMapping("/search/type/{jobType}")
+	public ResponseEntity<List<JobPostDTO>> getJobByJobType(@PathVariable JobType jobType) {
+	    return ResponseEntity.ok(jobPostService.getJobByJobType(jobType));
 	}
-	@GetMapping("/search/{jobTitle}")
-	public ResponseEntity<List<JobPostDTO>>getJobByJobTitle(@PathVariable String jobTitle){
-		return ResponseEntity.ok(jobPostService.getJobByJobTitle(jobTitle));
+
+	@GetMapping("/search/title/{jobTitle}")
+	public ResponseEntity<List<JobPostDTO>> getJobByJobTitle(@PathVariable String jobTitle) {
+	    return ResponseEntity.ok(jobPostService.getJobByJobTitle(jobTitle));
 	}
-	@GetMapping("/serach/{jobLocation}")
-	public ResponseEntity<List<JobPostDTO>>getJobByJobLocation(@PathVariable String jobLocation){
-		return ResponseEntity.ok(jobPostService.getJobByJobLocation(jobLocation));
+
+	@GetMapping("/search/location/{jobLocation}")
+	public ResponseEntity<List<JobPostDTO>> getJobByJobLocation(@PathVariable String jobLocation) {
+	    return ResponseEntity.ok(jobPostService.getJobByJobLocation(jobLocation));
 	}
-	@GetMapping("/search/{remote}")
-	public ResponseEntity<List<JobPostDTO>>getJobByRemote(@PathVariable String remote){
-		return ResponseEntity.ok(jobPostService.getJobByRemote(remote));
+
+	@GetMapping("/search/remote/{remote}")
+	public ResponseEntity<List<JobPostDTO>> getJobByRemote(@PathVariable String remote) {
+	    return ResponseEntity.ok(jobPostService.getJobByRemote(remote));
 	}
+
+
 	@PostMapping("/close/{id}")
 	public ResponseEntity<String>close(@PathVariable Long id){
 		jobPostService.closeJob(id);

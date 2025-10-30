@@ -49,7 +49,8 @@ public class PaymentController {
 	public ResponseEntity<List<SubscriptionPlan>>getPlans(){
 		return ResponseEntity.ok(subPlanRepo.findAll());
 	}
-	@PostMapping ResponseEntity<SubscriptionPlan>createPlans(@RequestBody SubscriptionPlan plan){
+	@PostMapping("/createPlan")
+	public ResponseEntity<SubscriptionPlan>createPlans(@RequestBody SubscriptionPlan plan){
 		return ResponseEntity.ok(subPlanRepo.save(plan));
 	}
     @GetMapping("/history/{userId}")
@@ -65,7 +66,7 @@ public class PaymentController {
 		byte[] pdfBytes = invoiceService.generateInvoice(pay);
 		
 		return ResponseEntity.ok()
-				.header("Content-Diposition", "Attachment; fileNameInvoice-" +pay.getTransactionId() + ".pdf")
+				.header("Content-Disposition", "Attachment; fileNameInvoice-" +pay.getTransactionId() + ".pdf")
 				.contentType(org.springframework.http.MediaType.APPLICATION_PDF).body(pdfBytes);
 	}
 	

@@ -19,4 +19,5 @@ public interface JobPostRepository extends JpaRepository<JobPost, Long> {
 	List<JobPost> findByJobLocation(String jobLocation);
 	List<JobPost> findByRemote(String remote);
 	
+	
 }

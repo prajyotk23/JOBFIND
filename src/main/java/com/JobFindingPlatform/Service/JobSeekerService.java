@@ -32,7 +32,7 @@ public class JobSeekerService {
 		jobseeker.setPassingYear(dto.getPassingYear());
 		jobseeker.setDegree(dto.getDegree());
 		jobseeker.setResumeURL(dto.getResumeURL());
-		
+		jobseeker.setActive(dto.isActive());
 		
 		jobSeekerRepo.save(jobseeker);
 		return dto;

@@ -47,8 +47,8 @@ public class EmailService {
 	
 	public void sendEmail(EmailRequestDTO dto, byte[]pdfBytes) {
 		
-		final String fromEmail= "your-email@gmail.com";
-		final String password = "your-app-password";
+		final String fromEmail= "prajyotkanagale1008@gmail.com";
+		final String password = "jhds hmcv dwqs gpcz";
 		
 		
 		

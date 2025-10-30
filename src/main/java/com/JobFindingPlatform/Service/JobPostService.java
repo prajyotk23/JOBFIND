@@ -33,7 +33,8 @@ public class JobPostService {
 		job.setJobTitle(dto.getJobTitle());
 		job.setPostedBy(dto.getPostedBy());
 		job.setRemote(dto.getRemote());
-		job.setPostedAt(dto.getPostedAt());
+		job.setPostedAt(java.time.LocalDateTime.now());
+		job.setActive(true);
 		
 		jobPostRepo.save(job);
 		

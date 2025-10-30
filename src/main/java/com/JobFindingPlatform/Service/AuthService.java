@@ -1,6 +1,7 @@
 package com.JobFindingPlatform.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -11,49 +12,37 @@ import com.JobFindingPlatform.Entity.User;
 import com.JobFindingPlatform.Repository.UserRepository;
 import com.JobFindingPlatform.Security.JWTUtil;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
 public class AuthService {
 
-	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private JWTUtil jwtUtil;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
-	public AuthResponseDTO register(UserDTO dto) {
-		
-		if(userRepository.findByUserEmail(dto.getUserEmail()).isPresent()) {
-			throw new RuntimeException("Emial already exist");
-		}
-		User user = new User();
-		
-		user.setUserName(dto.getUserName());
-		user.setUserEmail(dto.getUserEmail());
-		user.setPassword(passwordEncoder.encode(dto.getPassword()));
-		user.setRole(dto.getRole());
-		userRepository.save(user);
-		
-		String token = jwtUtil.generateToken(user);
-		return new AuthResponseDTO(token,"User got register");
-		
-	}
-	
-	public String login(LoginRequestDTO dto) {
-		
-		 User user = userRepository.findByUserEmail(dto.getUserEmail()).orElseThrow(() -> new RuntimeException("User not found"));
-		 
-		 if(!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-			 
-		 
-			 throw new RuntimeException("Invalid credentials");
-		 }
-		 
-	  return jwtUtil.generateToken(user);
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JWTUtil jwtUtil;
+
+    public AuthResponseDTO register(UserDTO dto) {
+        User user = new User();
+        user.setUserEmail(dto.getUserEmail());
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setRole(dto.getRole());
+        userRepository.save(user);
+
+        String token = jwtUtil.generateToken(user);
+        return new AuthResponseDTO(token, "User registered successfully");
     }
-	
-	
+
+    public String login(LoginRequestDTO dto) {
+        User user = userRepository.findByUserEmail(dto.getUserEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+
+        return jwtUtil.generateToken(user);
+    }
 }

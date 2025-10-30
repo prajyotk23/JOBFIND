@@ -1,6 +1,7 @@
 package com.JobFindingPlatform.Entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 import com.JobFindingPlatform.Enum.Duration;
 import com.JobFindingPlatform.Enum.PlanName;
@@ -22,9 +23,11 @@ public class SubscriptionPlan {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@Enumerated(EnumType.STRING)
 	private PlanName planName;
 	private Double price;
 	private String currency;
+	@Enumerated(EnumType.STRING)
 	private Duration duration;
 	private String features;
 	

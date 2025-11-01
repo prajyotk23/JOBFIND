@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JobSeeker Dashboard</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/dashboard/jobseeker.js" defer></script>
+</head>
+<body>
+  <div class="dashboard-card">
+    <h2>🎓 JobSeeker Dashboard</h2>
+
+    <!-- Create Profile Form -->
+    <form id="createForm" class="form-stack">
+      <input type="text" placeholder="Full Name" id="fullName" required />
+      <input type="email" placeholder="Email" id="email" required />
+      <input type="text" placeholder="Phone" id="phone" required />
+      <input type="text" placeholder="College Name" id="college" required />
+      <input type="text" placeholder="University Name" id="university" required />
+      <input type="text" placeholder="Degree" id="degree" required />
+      <input type="date" id="passingYear" required />
+      <input type="file" id="resumeFile" accept="application/pdf" required />
+      <label class="checkbox-label">
+        <input type="checkbox" id="active" /> Active
+      </label>
+      <button type="submit">Create Profile</button>
+    </form>
+    <p id="createMessage" class="message"></p>
+
+    <hr />
+
+    <!-- Search by Email -->
+    <form class="form-stack">
+      <h3>Get Profile by Email</h3>
+      <input type="email" id="searchEmail" placeholder="Enter Email" required />
+      <button type="button" onclick="getByEmail()">Search</button>
+    </form>
+
+    <!-- Search by ID -->
+    <form class="form-stack">
+      <h3>Get Profile by ID</h3>
+      <input type="number" id="searchId" placeholder="Enter ID" required />
+      <button type="button" onclick="getById()">Search</button>
+    </form>
+  </div>
+
+  <!-- Modal for Search Results -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">×</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+</body>
+</html>

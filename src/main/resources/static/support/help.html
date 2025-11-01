@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Request Help</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Request Unblock</h2>
+    <form id="helpForm">
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" required />
+
+      <label for="reason">Why should your account be unblocked?</label>
+      <textarea id="reason" rows="4" required></textarea>
+
+      <button type="submit">Send Request</button>
+      <p id="helpMessage"></p>
+    </form>
+
+    <hr />
+
+    <!-- <h3>Live Chat with Admin</h3>
+    <div id="chatBox" class="chat-box"></div>
+    <input type="text" id="chatInput" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div> -->
+
+  <script src="help.js"></script>
+</body>
+</html>

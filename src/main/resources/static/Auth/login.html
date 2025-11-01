@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | JobFind</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="auth.js" defer></script>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>🔑 Login</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button id="loginBtn">Login</button>
+<span id="loginSpinner" style="display:none;">⏳ Logging in...</span>
+
+
+    </form>
+    <p id="loginMessage" style="display:none;"></p>
+  </div>
+</body>
+</html>

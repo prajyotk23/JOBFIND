@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | JobFind</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="auth.js" defer></script>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>🔐 Register</h2>
+    <form id="registerForm">
+      <input type="text" id="userName" placeholder="Username" required>
+      <input type="email" id="userEmail" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <select id="role"></select>
+      <button id="registerBtn" type="submit">Register</button>
+<span id="spinner" style="display:none; margin-left: 10px;">⏳ Registering...</span>
+
+
+    </form>
+    
+    <p>Already have an account? <a href="/auth/login.html">Log in here</a></p>
+
+    
+    <p id="registerMessage" style="display:none;"></p>
+  </div>
+</body>
+</html>

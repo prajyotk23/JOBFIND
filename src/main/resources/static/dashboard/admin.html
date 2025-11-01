@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+	<div class="dashboard-card" id="adminDashboard" style="display: none;">
+		<h2>🛡️ Admin Dashboard</h2>
+
+		<div class="form-stack">
+			<h3>Perform Action</h3>
+			<input type="number" id="adminId" placeholder="Admin ID" /> <input
+				type="number" id="targetUserId" placeholder="Target User ID" /> <select
+				id="adminAction">
+				<option value="BLOCK">BLOCK</option>
+				<option value="UNBLOCK">UNBLOCK</option>
+			</select>
+			<button onclick="performAdminAction()">🚀 Submit Action</button>
+			<p class="message" id="adminActionMessage"></p>
+		</div>
+
+<h3 onclick="toggleUnblockRequests()" style="cursor: pointer;">📨 Unblock Requests ▼</h3>
+<div id="unblockRequests" style="display: none;"></div>
+
+
+
+		<div class="form-stack">
+			<h3>View Logs</h3>
+			<input type="number" id="logAdminId" placeholder="Search by Admin ID" />
+			<button onclick="getLogsByAdmin()">🔍 Admin Logs</button>
+			<input type="number" id="logUserId" placeholder="Search by User ID" />
+			<button onclick="getLogsByUser()">🔍 User Logs</button>
+		</div>
+	</div>
+
+	<div class="modal" id="adminLogModal">
+		<div class="modal-content">
+			<span class="close-btn" onclick="closeAdminLogModal()">×</span>
+			<div id="adminLogBody"></div>
+		</div>
+	</div>
+
+	<script src="admin.js"></script>
+</body>
+</html>

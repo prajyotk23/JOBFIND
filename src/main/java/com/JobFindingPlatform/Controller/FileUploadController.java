@@ -18,11 +18,11 @@ public class FileUploadController {
 	private FileUploadService fileUploadService;
 	
 	@PostMapping("/resume")
-	public ResponseEntity<String>uploadResume(@RequestParam("file") MultipartFile file ) throws Exception{
+	public ResponseEntity<String>uploadResume(@RequestParam MultipartFile file ) throws Exception{
 		return ResponseEntity.ok(fileUploadService.uploadFile(file, "resume"));
 	}
 	@PostMapping("/image")
-	public ResponseEntity<String>uploadImage(@RequestParam("file") MultipartFile file )throws Exception {
+	public ResponseEntity<String>uploadImage(@RequestParam MultipartFile file )throws Exception {
 		return ResponseEntity.ok(fileUploadService.uploadFile(file, "certificate"));
 	}
 	

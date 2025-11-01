@@ -2,7 +2,9 @@ package com.JobFindingPlatform.Entity;
 
 import jakarta.persistence.*;
 
+import com.JobFindingPlatform.Enum.Action;
 import com.JobFindingPlatform.Enum.Role;
+import com.JobFindingPlatform.Enum.UserStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +29,24 @@ public class User {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
+	@Enumerated(EnumType.STRING)
+	private UserStatus userStatus;
+	@Column(nullable = false)
+	private boolean blocked = false;
+
+
+
+
+	public boolean isBlocked() {
+	    return blocked;
+	}
+	public void setBlocked(boolean blocked) {
+	    this.blocked = blocked;
+	}
+
+
+
+
 	
 	public Long getId() {
 		return id;

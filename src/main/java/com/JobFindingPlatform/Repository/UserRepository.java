@@ -10,6 +10,5 @@ import com.JobFindingPlatform.Entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	Optional<User>findByUserEmail(String userEmail);
-	
+	Optional<User> findByUserEmail(String userEmail);	
 }

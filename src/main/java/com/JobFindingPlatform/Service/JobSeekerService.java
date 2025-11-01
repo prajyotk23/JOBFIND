@@ -45,6 +45,7 @@ public class JobSeekerService {
 		return jobSeekerRepo.findByEmail(email).map(jobSeek ->{
 			                                     
 			                                    JobSeekerDTO dto = new JobSeekerDTO();
+			                                    dto.setId(jobSeek.getId());
 			                                    dto.setFullName(jobSeek.getFullName());
 			                                    dto.setEmail(jobSeek.getEmail());
 			                                    dto.setPhone(jobSeek.getPhone());
@@ -53,6 +54,7 @@ public class JobSeekerService {
 			                                    dto.setPassingYear(jobSeek.getPassingYear());
 			                                    dto.setDegree(jobSeek.getDegree());
 			                                    dto.setResumeURL(jobSeek.getResumeURL());
+			                                    dto.setActive(jobSeek.isActive()); 
 			                                    return dto;
 			                                    		
 		                                            });
@@ -63,6 +65,7 @@ public class JobSeekerService {
 		return jobSeekerRepo.findById(id).map(jobSeeks->{
 			
 			JobSeekerDTO dto = new JobSeekerDTO();
+			dto.setId(jobSeeks.getId());
             dto.setFullName(jobSeeks.getFullName());
             dto.setEmail(jobSeeks.getEmail());
             dto.setPhone(jobSeeks.getPhone());
@@ -71,6 +74,7 @@ public class JobSeekerService {
             dto.setPassingYear(jobSeeks.getPassingYear());
             dto.setDegree(jobSeeks.getDegree());
             dto.setResumeURL(jobSeeks.getResumeURL());
+            dto.setActive(jobSeeks.isActive()); 
             return dto;
             		 });
 	}
